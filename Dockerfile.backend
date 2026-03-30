@@ -28,4 +28,4 @@ ENV PYTHONPATH=/app/API
 EXPOSE 8000
 
 # Levantar FastAPI con uvicorn
-CMD ["uvicorn", "API.Main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "mkdir -p /app/DataConnector/Data/processed /app/DataConnector/Data/Raw && uvicorn API.Main:app --host 0.0.0.0 --port 8000"]
