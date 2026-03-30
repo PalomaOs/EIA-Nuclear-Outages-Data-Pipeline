@@ -2,9 +2,9 @@ import sqlite3
 import logging
 from pathlib import Path
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__) 
 
-DB_PATH = str(Path(__file__).resolve().parent.parent / "Data" / "processed" / "database.db")
+DB_PATH = str(Path(__file__).resolve().parent / "processed" / "database.db")
 
 def get_connection(path: str = DB_PATH) -> sqlite3.Connection:
     conn = sqlite3.connect(path)
