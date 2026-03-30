@@ -35,7 +35,7 @@ La aplicación está disponible en:
 | Fuente de datos   | EIA Open Data API                     |
 | Pipeline          | Python, pandas, pyarrow               |
 | Almacenamiento    | SQLite, Parquet                       |
-| Backend           | FastAPI, SQLAlchemy, passlib, JWT     |
+| Backend           | FastAPI, passlib, JWT     |
 | Frontend          | Next.js 16, React, Tailwind CSS       |
 | Contenedorización | Docker, Docker Compose                |
 | Pruebas           | pytest (30 pruebas)     |
@@ -44,8 +44,8 @@ La aplicación está disponible en:
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                  docker-compose                      │
-│                                                      │
+│                  docker-compose                     │
+│                                                     │
 │  ┌─────────────────────────────┐   ┌──────────────┐ │
 │  │         backend             │   │   frontend   │ │
 │  │                             │   │              │ │
@@ -95,7 +95,7 @@ La base de datos está compuesta por cuatro tablas:
 ### 1. Clonar el repositorio
  
 ```bash
-git clone https://github.com/tu-usuario/EIA-Nuclear-Outages-Data-Pipeline.git
+git clone https://github.com/PalomaOs/EIA-Nuclear-Outages-Data-Pipeline.git
 cd EIA-Nuclear-Outages-Data-Pipeline
 ```
  
