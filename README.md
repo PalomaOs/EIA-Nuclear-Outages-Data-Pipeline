@@ -14,6 +14,19 @@ Capacidades principales:
 - 30 pruebas pasando en los módulos de API y DataConnector
 
 ---
+## Despliegue
+
+La aplicación está disponible en:
+
+| Servicio  | URL |
+|-----------|-----|
+| Frontend  | [eia-nuclear-outages-data-pipeline-iefj0lle0.vercel.app](https://eia-nuclear-outages-data-pipeline-iefj0lle0.vercel.app) |
+| API docs  | [eia-nuclear-outages-data-pipeline-production.up.railway.app/docs](https://eia-nuclear-outages-data-pipeline-production.up.railway.app/docs) |
+
+> Desplegado con [Vercel](https://vercel.com) (frontend) y [Railway](https://railway.app) (backend).
+
+
+---
 
 ## Stack tecnológico
 
@@ -59,6 +72,9 @@ Capacidades principales:
 ## Esquema de base de datos
 
 ![Diagrama ER](Docs/Diagram-ER.png)
+
+El esquema fue diseñado para preservar la granularidad original de la API de la EIA, que reporta métricas a nivel de generador individual por día. En lugar de aplanar los datos en una sola tabla, se normalizó en entidades separadas para evitar redundancia y permitir consultas flexibles por planta, generador o período de tiempo.
+
 
 La base de datos está compuesta por cuatro tablas:
 
@@ -148,13 +164,14 @@ Se valida el comportamiento del checkpoint, el cliente de la EIA ante fallos de 
 
 ## Supuestos
 
-- **Autenticación de un solo usuario** — la app utiliza una credencial de administrador única definida via variables de entorno. La autenticación multi-usuario quedó fuera del alcance. 
-| Campo      | Valor                        |
+- **Autenticación de un solo usuario** — la app utiliza una credencial de administrador única definida via variables de entorno. La autenticación multi-usuario quedó fuera del alcance.
+
+| Campo      | Valor         |
 |------------|---------------|
 | Usuario    | admin@eia.com |
 | Contraseña | 123Adm#       |
 
-- **Disponibilidad de datos EIA** — el pipeline asume que el endpoint de interrupciones de generadores nucleares de la EIA permanece disponible en la URL configurada.ersisten en Parquet antes de cargarse en SQLite, permitiendo re-ingesta sin volver a consultar la API.
+- **Disponibilidad de datos EIA** — el pipeline asume que el endpoint de interrupciones de generadores nucleares de la EIA permanece disponible en la URL configurada.
 
 ---
 
