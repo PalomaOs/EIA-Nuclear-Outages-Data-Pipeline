@@ -12,10 +12,11 @@ _CONNECTOR_MAIN = _CONNECTOR_DIR / "Main.py"
 def run_refresh() -> dict:
     logger.info("Refresh started.")
     try:
-        # Ensure DataConnector is importable and run its main() function.
         connector_dir = str(_CONNECTOR_DIR)
-        if connector_dir not in sys.path:
-            sys.path.insert(0, connector_dir)
+        # Ensure DataConnector is importable and run its main() function.
+        for path in [connector_dir, str(_CONNECTOR_DIR / "Data"), str(_CONNECTOR_DIR / "Connector")]:
+            if path not in sys.path:
+                sys.path.insert(0, path)
 
         spec = importlib.util.spec_from_file_location("connector_main", _CONNECTOR_MAIN)
         module = importlib.util.module_from_spec(spec)
