@@ -1,7 +1,7 @@
 // lib/api.ts
 const TOKEN_STORAGE_KEY = "nom_auth_token"
 
-export const API_URL = "http://localhost:8000"
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"
 
 export function getAuthHeaders(): HeadersInit {
   const token = localStorage.getItem(TOKEN_STORAGE_KEY)
