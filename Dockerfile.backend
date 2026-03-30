@@ -1,0 +1,31 @@
+# ── Backend: API + DataConnector ──────────────────────────────────────────────
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# Dependencias del sistema (necesarias para pandas/pyarrow)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Instalar dependencias Python
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copiar código fuente
+# API y DataConnector en la misma imagen para que el import dinámico funcione
+COPY API/        ./API/
+COPY DataConnector/ ./DataConnector/
+
+
+# Crear carpetas de datos si no existen
+RUN mkdir -p DataConnector/Data/processed DataConnector/Data/Raw
+
+# Permite que los módulos dentro de API/ se importen directamente (Core, Routers, etc.)
+ENV PYTHONPATH=/app/API
+
+# Puerto de la API
+EXPOSE 8000
+
+# Levantar FastAPI con uvicorn
+CMD ["uvicorn", "API.Main:app", "--host", "0.0.0.0", "--port", "8000"]

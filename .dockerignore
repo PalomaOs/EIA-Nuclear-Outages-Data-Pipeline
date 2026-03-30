@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Node / Next.js
+Front/node_modules/
+Front/.next/
+Front/.pnpm-store/
+
+# Datos locales (el volumen los maneja en Docker)
+DataConnector/Data/Raw/
+DataConnector/Data/processed/
+
+# Git
+.git/
+.gitignore
+
+# Entornos (el .env de API se copia explícitamente vía env_file)
+.env
+.env.local
+.env.*.local
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Tests
+API/Test/
+DataConnector/Test/
