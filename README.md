@@ -58,7 +58,7 @@ Capacidades principales:
 
 ## Esquema de base de datos
 
-![Diagrama ER](Docs/Diagrama-ER.png)
+![Diagrama ER](Docs/Diagram-ER.png)
 
 La base de datos está compuesta por cuatro tablas:
 
@@ -85,27 +85,30 @@ cd EIA-Nuclear-Outages-Data-Pipeline
  
 ### 2. Configurar variables de entorno
 Edita el `.env` con tus valores 
-
-# ── API Config ───────────────────────────────────────────────────────────────
-# Regístrate para obtener una API key gratuita en https://www.eia.gov/opendata/register.php
+```bash
+# ── API Config ─────────────────────────────────────────────
+# Regístrate para obtener una API key gratuita en:
+# https://www.eia.gov/opendata/register.php
 # Recibirás la key por correo en pocos minutos
 API_KEY=
 LENGTH=
-BASE_URL= 
+BASE_URL=
 
-# ── JWT ───────────────────────────────────────────────────────────────────────
+# ── JWT ───────────────────────────────────────────────────
 JWT_SECRET=
 JWT_ALGORITHM=HS256
 JWT_EXPIRE_MINUTES=5
 
-# ── App credentials ───────────────────────────────────────────────────────────
+# ── App credentials ───────────────────────────────────────
+# Genera el hash con:
 # python -c "from passlib.context import CryptContext; print(CryptContext(schemes=['bcrypt']).hash('tu_contraseña'))"
 APP_USERNAME=admin@eia.com
-APP_PASSWORD= password_hash_aquí
+APP_PASSWORD=password_hash_aquí
 
-# ── CORS ──────────────────────────────────────────────────────────────────────
+# ── CORS ──────────────────────────────────────────────────
 ALLOWED_ORIGINS=["http://localhost:3000"]
- 
+```
+
 ### 3. Construir y levantar
  
 ```bash

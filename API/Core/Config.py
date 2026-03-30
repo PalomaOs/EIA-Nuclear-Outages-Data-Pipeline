@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-ENV_FILE = BASE_DIR / ".env"
+ENV_FILE = BASE_DIR / ".env" if (BASE_DIR / ".env").exists() else None
 
 class Settings(BaseSettings):
     jwt_secret: str
